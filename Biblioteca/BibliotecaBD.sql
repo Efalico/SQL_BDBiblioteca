@@ -48,21 +48,22 @@ INSERT INTO Livros VALUES ('Harry Potter Pedra Filosofal','1997',1),
 						  ('Harry Potter e a Ordem da Fênix','2003',1),
 						  ('Harry Potter e o Enigma do Príncipe','2005',1),
 						  ('Harry Potter e as Relíquias da Morte','2007',1)
-
-
-
-						
 						  
+
 INSERT INTO Emprestimos VALUES ('10/20/2024','10/30/2024',5),
 								('10/20/2024','10/30/2024',7)
 
+
 --Atualizar os dados inseridos
+
 
 UPDATE Emprestimos
 SET DataEmprestimo = '2024/10/20', DataDevolucao= '2024/10/30'
 WHERE EmprestimoID=2;
 
+
 --Deletar dados inserido 
+
 
 DELETE FROM Emprestimos WHERE EmprestimoID=3;
 
@@ -80,8 +81,6 @@ SELECT*FROM Emprestimos
 
 
 
-SELECT*FROM Emprestimos 
-
 INNER JOIN Livros L on L.LivrosID = E.LivroID
 
 INNER JOIN Autores A on A.AutorID = L.AutorID
@@ -95,4 +94,25 @@ DROP TABLE Emprestimos
 
 BACKUP DATABASE BibliotecaDB 
 TO DISK = 'C:\temp\BibliotecaBD.bak';
+
+
+
+SELECT E.EmprestimoID as'ID do Empréstimo', A.NomeCompleto as 'Nome do Autor', L.LivrosID as 'ID do Livro', 
+L.AnoPublicacao as 'Ano de Publicação', L.Titulo as 'Título do Livro' FROM Emprestimos E
+INNER JOIN Livros L on L.LivrosID = E.LivroID
+INNER JOIN Autores A on A.AutorID = L.AutorID
+
+
+SELECT E.EmprestimoID as'ID do Empréstimo', A.NomeCompleto as 'Nome do Autor', L.LivrosID as 'ID do Livro', 
+L.AnoPublicacao as 'Ano de Publicação', L.Titulo as 'Título do Livro' FROM Emprestimos E
+INNER JOIN Livros L on L.LivrosID = E.LivroID
+INNER JOIN Autores A on A.AutorID = L.AutorID
+
+
+ALTER TABLE Emprestimos  
+ADD FOREIGN KEY (LivroID) REFERENCES Livros(LivrosID);
+
+
+ALTER TABLE Livros
+ADD FOREIGN KEY (AutorID) REFERENCES Autores(AutorID);
 

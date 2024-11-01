@@ -1,0 +1,128 @@
+--Criar Base de dados
+create database BDTI46
+go
+
+
+--Entrar na base de dados
+
+use bdti46;
+go 
+
+--Realizar backup da base de dados 
+BACKUP DATABASE BDTI46
+TO DISK = 'C:\temp\bdti46.bak';
+
+--Restaurar a base de dados 
+
+RESTORE DATABASE BDTI46
+FROM DISK = 'C:\temp\bdti46.bak';
+
+-- Exclusao de Base de dados 
+use master;
+drop database BDTI46
+
+
+
+--Criar Base de dados
+create database BDTI46
+go
+
+
+
+
+select*from 
+
+
+
+
+--Entrar na base de dados
+
+use bdti46;
+go 
+
+--Criando as Tabelas 
+
+CREATE TABLE Alunos (
+Id int identity primary key,
+nome varchar(255) not null,
+celular varchar(50) not null 
+);
+
+
+
+
+INSERT INTO Alunos VALUES ('Marcos','1234'),
+						  ('Cadu','1234'),
+						  ('Douglas','1234'),
+						  ('Giovani','1234'),
+						  ('Anderson','1234'),
+						  ('Arieli','1234'),
+						  ('Isabeli','1234'),
+						  ('Leonardo','1234'),
+						  ('Julio','1234'),
+						  ('Felipe','1234'),
+						  ('Eduardo','1234')
+
+
+
+--Realizar backup da base de dados 
+BACKUP DATABASE BDTI46
+TO DISK = 'C:\temp\bdti46.bak';
+
+--Restaurar a base de dados 
+
+RESTORE DATABASE BDTI46
+FROM DISK = 'C:\temp\bdti46.bak';
+
+-- Exclusao de Base de dados 
+use master;
+drop database BDTI46
+
+
+
+
+BibliotecaBD 
+
+
+
+USE MASTER
+
+--Criando a base de dadps 
+CREATE DATABASE BibliotecaDB
+GO
+
+USE BibliotecaDB;
+GO
+--Criando Tabelas
+CREATE TABLE Autores(
+AutorID int identity primary key,
+NomeCompleto varchar(255) not null,
+PaisOrigem varchar(255) not null
+);
+
+
+CREATE TABLE Livros(
+LivrosID  int identity primary key,
+Titulo varchar(255) not null,
+AnoPublicacao varchar(255) not null,
+AutorID int not null
+);
+
+CREATE TABLE Emprestimos(
+EmprestimoID  int identity primary key,
+DataEmprestimo date not null,
+DataDevolucao date not null,
+LivroID int not null
+);
+
+drop table Emprestimos
+
+
+
+
+
+SELECT*FROM Autores
+SELECT*FROM Livros
+SELECT*FROM Emprestimos
+
+
